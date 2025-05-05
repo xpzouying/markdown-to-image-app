@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import 'markdown-to-image/dist/style.css';
 import { Md2Poster, Md2PosterContent, Md2PosterHeader, Md2PosterFooter } from 'markdown-to-image';
 import { toPng } from 'html-to-image';
@@ -15,18 +15,14 @@ function App() {
 - 列表项 2
 - 列表项 3
 
-> 这是一段引用文本
-
-\`\`\`javascript
-console.log('Hello, World!');
-\`\`\``);
+> 这是一段引用文本`);
 
   const [theme, setTheme] = useState('SpringGradientWave');
   const [headerText, setHeaderText] = useState('我的 Markdown 海报');
   const [footerText, setFooterText] = useState('由 markdown-to-image 生成');
   const [size, setSize] = useState('mobile');
 
-  const posterRef = useRef(null);
+  const posterRef = React.useRef(null);
 
   // 可用的主题
   const themes = [
@@ -71,18 +67,6 @@ console.log('Hello, World!');
       });
   };
 
-  // 从文件中读取 Markdown
-  const handleFileUpload = (event) => {
-    const file = event.target.files[0];
-    if (!file) return;
-
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      setMarkdown(e.target.result);
-    };
-    reader.readAsText(file);
-  };
-
   return (
     <div className="app-container">
       <h1>Markdown 到图片转换器</h1>
@@ -90,15 +74,6 @@ console.log('Hello, World!');
       <div className="app-content">
         <div className="editor-panel">
           <h2>编辑 Markdown</h2>
-
-          <div className="form-group">
-            <label>上传 Markdown 文件：</label>
-            <input
-              type="file"
-              accept=".md,.txt,.markdown"
-              onChange={handleFileUpload}
-            />
-          </div>
 
           <div className="form-group">
             <label>标题：</label>
