@@ -17,25 +17,11 @@ function App() {
 
 > 这是一段引用文本`);
 
-  const [theme, setTheme] = useState('SpringGradientWave');
   const [headerText, setHeaderText] = useState('我的 Markdown 海报');
   const [footerText, setFooterText] = useState('由 多多先生 自动生成');
   const [size, setSize] = useState('mobile');
 
   const posterRef = React.useRef(null);
-
-  // 可用的主题
-  const themes = [
-    'SpringGradientWave',
-    'SpringPink',
-    'SpringLake',
-    'SpringGreenStream',
-    'SpringYellowWarm',
-    'SpringGreenWarm',
-    'SpringPurpleGradient',
-    'Minimal',
-    'MinimalDark'
-  ];
 
   // 可用的尺寸
   const sizes = [
@@ -94,18 +80,6 @@ function App() {
           </div>
 
           <div className="form-group">
-            <label>主题：</label>
-            <select
-              value={theme}
-              onChange={(e) => setTheme(e.target.value)}
-            >
-              {themes.map((t) => (
-                <option key={t} value={t}>{t}</option>
-              ))}
-            </select>
-          </div>
-
-          <div className="form-group">
             <label>尺寸：</label>
             <select
               value={size}
@@ -137,7 +111,7 @@ function App() {
         <div className="preview-panel">
           <h2>预览</h2>
           <div className="preview-container" ref={posterRef}>
-            <Md2Poster theme={theme} size={size}>
+            <Md2Poster theme="SpringGradientWave" size={size}>
               <Md2PosterHeader>
                 {headerText}
               </Md2PosterHeader>
