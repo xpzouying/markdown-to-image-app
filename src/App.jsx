@@ -19,7 +19,7 @@ function App() {
 
   const [theme, setTheme] = useState('SpringGradientWave');
   const [headerText, setHeaderText] = useState('我的 Markdown 海报');
-  const [footerText, setFooterText] = useState('由 markdown-to-image 生成');
+  const [footerText, setFooterText] = useState('由 多多先生 自动生成');
   const [size, setSize] = useState('mobile');
 
   const posterRef = React.useRef(null);
